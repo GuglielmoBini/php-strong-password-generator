@@ -1,8 +1,9 @@
 <?php
+// inizio sessione
 session_start();
 
+// creo variabile per la password inviata da index.php
 $password = $_SESSION['password'];
-
 ?>
 
 
@@ -20,6 +21,7 @@ $password = $_SESSION['password'];
 <body>
     <div class="container my-5">
         <div class="text-center border p-5">
+            <!-- stampo la password -->
             <h1 class="text-success mb-5">La tua Password é: <?php echo $password ?></h1>
             <a href="index.php" class='btn btn-warning'>TORNA INDIETRO</a>
         </div>

@@ -6,7 +6,6 @@ $password_length = $_GET['number'] ?? '';
 include './includes/functions.php';
 
 
-
 if ($generated_password) {
     // inizio sessione
     session_start();
