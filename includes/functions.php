@@ -14,10 +14,10 @@ function create_random_password($length, $characters)
     for ($i = 0; $i < $length; $i++) {
         // variabile per ricavare random index dell'array    
         $random_index = rand(0, 3);
-        // variabile per calcolare la lunghezza di una stringa dell'array
-        $last_character_index = strlen($characters[$random_index]) - 1;
+        // ricavo la lunghezza di una stringa dell'array
+        $string_length = strlen($characters[$random_index]) - 1;
         // prendo randomicamente una delle lettere/numeri/segni e li monto per creare la password
-        $password .= $characters[$random_index][rand(0, $last_character_index)];
+        $password .= $characters[$random_index][rand(0, $string_length)];
     };
     return $password;
 };
