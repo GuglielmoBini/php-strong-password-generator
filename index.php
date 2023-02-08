@@ -1,5 +1,25 @@
 <?php
+$password_length = $_GET['number'] ?? '';
 
+$characters = [
+    'abcdefghijklmnopqrstuvwxyz',
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    '0123456789',
+    '!$%&'
+];
+
+function create_random_password($length, $characters){
+    if (!$length || $length < 8 || $length > 16) return;
+    $password = '';
+    for ($i = 0; $i < $length; $i++) {
+    $random_index = rand(0,3);
+    $last_character_index = strlen($characters[$random_index]) - 1;
+    $password .= $characters[$random_index][rand(0,$last_character_index)];
+    };
+    return $password;
+};
+
+$generated_password = create_random_password($password_length, $characters) ;
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +35,15 @@
     <div class='container text-center mt-5'>
         <h1 class='my-4'>Strong Password Generator</h1>
         <h3 class='my-3'>Genera una password sicura</h3>
+        <p class='text-success'>La tua password è : <span class='fs-3'><?php echo $generated_password ?></span></p>
         <form action="" method='GET' class='d-flex flex-column align-items-center'>
             <div class="my-4 w-25 ">
                 <label for="passwordlength" class="form-label">Lunghezza password:</label>
-                <input type="number" class="form-control" id="passwordlength" name='number' min='1' max='16'>
+                <input type="number" class="form-control" id="passwordlength" name='number' min='8' max='16' placeholder='minimo 8 caratteri...'>
             </div>
             <div class='my-4'>
                 <button type='submit' class='btn btn-success'>INVIA</button>
-                <button type='reset' class='btn btn-danger'>ANNULLA</button>
+                <a href="index.php" class='btn btn-secondary'>Annulla</a>
             </div>
         </form>
     </div>
